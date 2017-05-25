@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  mssql:
+    image: microsoft/mssql-server-linux
+    container_name: mssql
+    ports:
+      - "1433:1433"
+    volumes: 
+      - "./app/scuptel/:/tmp/scuptel/"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "scupTel.8520"
+      
+  scuptel.api:
+    image: microsoft/aspnetcore-build:1.0-1.1
+    container_name: scuptel.api
+    depends_on:
+      - mssql
+    command: >
+      bash -c "apt-get update;\
+               apt-get install -y git;\
+               mkdir -p /app;\
+               cd /app;\
+               git clone https://github.com/hdrezei/scuptel.git;\
+               cd temp/ScupTel/ScupTel.API;\
+               dotnet restore;\
+               dotnet ef database update;\
+               dotnet run -d"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+    ports:
+      - "5000:80"
+    links:
+      - mssql:mssql
