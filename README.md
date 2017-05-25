@@ -10,8 +10,7 @@
   - [Docker for Mac](https://docs.docker.com/docker-for-mac/)
   - [Docker for Windows](https://docs.docker.com/docker-for-windows/)
   
-* Run **docker-compose up -d**
-* Run **docker logs scuptel.api**
+* Run **docker-compose up**
 
 ### Endpoints
 * localhost:5000/Home (GET)
