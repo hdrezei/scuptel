@@ -1,4 +1,6 @@
 # ScupTel
+[![TravisCI](https://travis-ci.org/hdrezei/scuptel.svg?branch=master)](https://travis-ci.org/hdrezei/scuptel)
+[![CircleCI](https://circleci.com/gh/hdrezei/scuptel.svg?style=shield)](https://circleci.com/gh/hdrezei/scuptel)
 [![Docker](https://img.shields.io/docker/automated/jrottenberg/ffmpeg.svg)](https://www.docker.com/community-edition)
 
 ### Start Application
